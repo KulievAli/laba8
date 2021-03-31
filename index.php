@@ -10,28 +10,22 @@ require "core/LogInterface.php";
 require "kuliev/KulievException.php";
 require "kuliev/MyLog.php";
 require "kuliev/LinearEquationSolver.php";
-require "kuliev/QuadEquationSolver.php";
+require "kuliev/Square.php";
 
-$solver = new kuliev\QuadEquationSolver();
-$logger = kuliev\MyLog::Instance();
+MyLog::log("Program version: " . trim(file_get_contents("version")));
 
 try {
-    echo "Enter 3 numbers: a, b, c.\n\r";
+    echo "Enter 3 parameters: " . PHP_EOL;
+$a = readline();
+$b = readline();
+$c = readline();
 
-    $a = readline("Enter a: \n\r");
-    $b = readline("Enter b: \n\r");
-    $c = readline("Enter c: \n\r");
+$sqr = new Square();
+    MyLog::log("The equation is: ". $a.'x^2 + '.$b.'x + '.$c.' = 0'. PHP_EOL);
 
-    $result = $solver->solve($a, $b, $c);
-    
-    $str = implode(" ", $result);
-    
-    $string = "Equation roots: ";
-    $logger::log($string.$str."\n\r");
-} catch(kuliev\KulievException $err) {
-    $message = $err->getMessage();
+    $res = $sqr->solve($a, $b, $c);
 
-    $logger::log($message);
+} catch (RuntimeException $e){
+   MyLog::log("Error".$e->getMessage());
 }
-
-$logger::write();
+MyLog::write();

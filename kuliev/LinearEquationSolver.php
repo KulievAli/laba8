@@ -4,16 +4,15 @@ namespace kuliev;
 
 class LinearEquationSolver
 {
-    protected $x;
+    protected $X1;
 
     public function solveLinearEquation($a, $b)
     {
         if ($a == 0) {
-            throw new KulievException("Equation does not exist.\n\r");
+            throw new KulievException('The equation does not have exist');
         }
-
-        MyLog::log("It is a linear equation.\n\r");
-
-        return $this->x = [($b * -1) / $a];
+        MyLog::log("This is linear equation\n");
+        MyLog::log('Roots: ');
+        MyLog::log(-($b / $a));
     }
 }
