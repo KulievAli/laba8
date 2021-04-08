@@ -2,7 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 use kuliev\MyLog;
-
+//use Kuliev\MyLog;
 final class MyLogTest extends TestCase {
     public function testLog(): void {
         $this->expectOutputString("Hello, World!\n\r");
